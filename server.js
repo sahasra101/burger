@@ -11,6 +11,15 @@ var PORT = process.env.PORT || 8080;
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.get("/index", function(req, res) {
+  connection.query("SELECT * FROM burgers;", function(err, data) {
+    if (err) {
+      return res.status(500).end();
+    }
+    res.render("index", { UEburger: data }, {Eburger: data});
+  });
+});
+
 // display the uneaten (UE) burgers in left side of index frontend.
 orm.selectUEburger("burger_name", "burgers", "devoured");
 
