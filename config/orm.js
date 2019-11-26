@@ -10,16 +10,18 @@ var connection = require("./connection.js");
 // These help avoid SQL injection
 // https://en.wikipedia.org/wiki/SQL_injection
 var orm = {
-  selectBurger: function(valOfCol, valOfCol2, tableInput) {
-    var queryString = "SELECT ?,? FROM ??";
+  all: function(tableInput, cb) {
+    var queryString = "SELECT * FROM ??";
     // select all burgers (id and burger_name)
-    connection.query(queryString, [valOfCol, valOfCol2, tableInput], function(err, result) {
+    connection.query(queryString, [tableInput], function(err, result) {
       if (err) throw err;
-      console.log("uneaten burgers: "+result);
+      //console.log("uneaten burgers: ");
+     console.log(result);
+     cb(result);
     });
   },
 
-  insertBurger: function(tableInput, colToInput, newBurg) {
+  create: function(tableInput, colToInput, newBurg) {
     var queryString = "INSERT INTO ?? (??) VALUE (?)";
     connection.query(queryString, [tableInput, colToInput, newBurg], function(err, result) {
       if (err) throw err;
@@ -27,7 +29,7 @@ var orm = {
     });
   },
 
-  devourBurger: function(tableInput, colToUpdate, valOfCol) {
+  update: function(tableInput, colToUpdate, valOfCol) {
     var queryString =
       "UPDATE ?? ?? = 1 WHERE ? = id";
     connection.query(

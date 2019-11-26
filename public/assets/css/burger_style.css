@@ -1,9 +1,13 @@
+.text {
+  text-align: center;
+}
+
 body {
     background-color: aquamarine;
 }
 
 #burgerPic {
-    width: 50%;
+    width: 25%;
     height: auto;
     display: block;
     margin-left: auto;
@@ -19,4 +23,10 @@ body {
     content: "";
     display: table;
     clear: both;
+  }
+
+  .form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
   }
