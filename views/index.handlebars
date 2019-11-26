@@ -1,37 +1,39 @@
 <img id="burgerPic" src="../public/assets/img/burger.jpg" alt="">
 
-<h1>Eat-Da-Burger App</h1>
+<h1 class="text">Eat-Da-Burger App</h1>
 
-<h3>Eat As Many Burgers As You Want!!!</h3>
+<h3 class="text">Eat As Many Burgers As You Want!!!</h3>
 
 <!-- Pass in data from server.js -->
-<ul>
-  {{#each UEburger}}
-  	<li>
-  		<p><span class="label">ID:</span> {{this.id}}</p>
-      <p><span class="label">Quote:</span> {{this.quote}}</p>
-      <p><span class="label">Author:</span> {{this.author}}</p>
+<div class="row">
+    <div class="column">
+        <ul>
+            {{#each UEburger}}
+            <li>
+                <p><span>ID: {{this.id}}. {{this.burger_name}}</span>
+                    <button data-id="{{this.id}}" class="updateBurger">Devour</button></p>
+            </li>
+            {{/each}}
+        </ul>
 
-      <button data-id="{{this.id}}" class="delquote">Delete</button>
+    </div>
+    <div class="column">
+        <ul>
+            {{#each Eburger}}
+            <li>
+                <p><span>ID: {{this.id}}. {{this.burger_name}}</span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
 
-      <a href="/{{this.id}}">Update this quote</a>
-  	</li>
-  {{/each}}
-</ul>
+<h3 class="text">Add a Burger</h3>
 
-<h2>Add a Quote</h2>
-
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="auth">Author:</label>
-    <input type="text" id="auth" name="author">
-  </div>
-
-  <div class="form-group">
-    <label for="quo">Quote:</label>
-    <textarea id="quo" name="quote" rows="8" cols="40"></textarea>
-  </div>
-
-  <button type="submit">Add Quote</button>
+<form class="text" class="create-form">
+    <div class="form-group">
+        <label for="newBurg">New Burger:</label>
+        <input type="text" id="newBurger" name="newBurger">
+    </div>
+    <button type="submit">Add Quote</button>
 </form>
