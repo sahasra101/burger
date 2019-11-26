@@ -8,20 +8,17 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // display the uneaten (UE) burgers in left side of index frontend.
-orm.selectUEburger("party_name", "parties");
+orm.selectUEburger("burger_name", "burgers", "devoured");
 
 // changes boolean from true to false when devoured.
-orm.devourBurger("client_name", "clients");
+orm.devourBurger("devoured", "burgers", "burger_name");
 
 // displays eaten burger in right side of index frontend.
-orm.selectEburger("parties", "party_type", "grown-up");
+orm.selectEburger("burger_name", "burgers", "devoured");
 
 // Starts the server to begin listening
 // =============================================================
