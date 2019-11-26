@@ -1,6 +1,9 @@
 var connection = require("./connection.js");
 
 // Object Relational Mapper (ORM)
+// * `selectAll()`
+// * `insertOne()`
+// * `updateOne()`
 
 // The ?? signs are for swapping out table or column names
 // The ? signs are for swapping out other values
@@ -14,6 +17,15 @@ var orm = {
       console.log("uneaten burgers: "+result);
     });
   },
+
+  insertBurger: function(valOfCol, tableInput, colToSearch) {
+    var queryString = "INSERT ? FROM ?? WHERE ??";
+    connection.query(queryString, [valOfCol, tableInput, colToSearch], function(err, result) {
+      if (err) throw err;
+      console.log("uneaten burgers: "+result);
+    });
+  },
+
   selectEburger: function(valOfCol, tableInput, colToSearch) {
     var queryString = "SELECT ? FROM ?? WHERE ? = true";
     console.log(queryString);

@@ -6,7 +6,7 @@ USE `burgers_db`;
 CREATE TABLE `burgers` (
 	`id` Int(10) AUTO_INCREMENT NOT NULL,
 	`burger_name` VARCHAR(100) NOT NULL,
-    'devoured' BOOLEAN DEFAULT true,
+    `devoured` BOOLEAN DEFAULT false,
 	/* Set ID as primary key */
 	PRIMARY KEY ( `id` )
 );
