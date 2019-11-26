@@ -10,36 +10,29 @@ var connection = require("./connection.js");
 // These help avoid SQL injection
 // https://en.wikipedia.org/wiki/SQL_injection
 var orm = {
-  selectUEburger: function(valOfCol, tableInput, colToSearch) {
-    var queryString = "SELECT ? FROM ?? WHERE ? = false";
-    connection.query(queryString, [valOfCol, tableInput, colToSearch], function(err, result) {
+  selectBurger: function(valOfCol, valOfCol2, tableInput) {
+    var queryString = "SELECT ?,? FROM ??";
+    // select all burgers (id and burger_name)
+    connection.query(queryString, [valOfCol, valOfCol2, tableInput], function(err, result) {
       if (err) throw err;
       console.log("uneaten burgers: "+result);
     });
   },
 
-  insertBurger: function(valOfCol, tableInput, colToSearch) {
-    var queryString = "INSERT ? FROM ?? WHERE ??";
-    connection.query(queryString, [valOfCol, tableInput, colToSearch], function(err, result) {
+  insertBurger: function(tableInput, colToInput, newBurg) {
+    var queryString = "INSERT INTO ?? (??) VALUE (?)";
+    connection.query(queryString, [tableInput, colToInput, newBurg], function(err, result) {
       if (err) throw err;
-      console.log("uneaten burgers: "+result);
+      console.log("All burgers: "+result);
     });
   },
 
-  selectEburger: function(valOfCol, tableInput, colToSearch) {
-    var queryString = "SELECT ? FROM ?? WHERE ? = true";
-    console.log(queryString);
-    connection.query(queryString, [valOfCol, tableInput, colToSearch], function(err, result) {
-      if (err) throw err;
-      console.log("eaten burgers: "result);
-    });
-  },
-  devourBurger: function(valOfCol, tableInput, valOfCol) {
+  devourBurger: function(tableInput, colToUpdate, valOfCol) {
     var queryString =
-      "UPDATE ? to true FROM ?? WHERE ? = burger_name";
+      "UPDATE ?? ?? = 1 WHERE ? = id";
     connection.query(
       queryString,
-      [valOfCol, tableInput, valOfCol],
+      [tableInput, colToUpdate, valOfCol],
       function(err, result) {
         if (err) throw err;
         console.log(result);

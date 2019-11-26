@@ -21,13 +21,13 @@ app.get("/index", function(req, res) {
 });
 
 // display the uneaten (UE) burgers in left side of index frontend.
-orm.selectUEburger("burger_name", "burgers", "devoured");
+orm.selectBurger("id", "burger_name", "burgers");
 
 // changes boolean from true to false when devoured.
-orm.devourBurger("devoured", "burgers", "burger_name");
+orm.insertBurger("burgers", "burger_name", "newBurg");
 
 // displays eaten burger in right side of index frontend.
-orm.selectEburger("burger_name", "burgers", "devoured");
+orm.updateBurger("burger_name", "burgers", "id");
 
 // Starts the server to begin listening
 // =============================================================
