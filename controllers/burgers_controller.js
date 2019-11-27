@@ -17,8 +17,8 @@ router.get("/", function(req, res) {
 
 router.post("/api/burgers", function(req, res) {
   // console.log(req);
-  var newBurger = req.body.name;
-  console.log(newBurger);
+  // var newBurger = req.body.name;
+  console.log(req.body);
   burger.create(newBurger,
   function(result) {
     // Send back the ID of the new burger
