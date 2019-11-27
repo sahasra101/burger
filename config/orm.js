@@ -21,17 +21,16 @@ var orm = {
     });
   },
 
-  create: function(tableInput, colToInput, newBurg) {
-    var queryString = "INSERT INTO ?? (??) VALUE (?)";
-    connection.query(queryString, [tableInput, colToInput, newBurg], function(err, result) {
+  create: function(newBurger) {
+    var queryString = "INSERT INTO burgers (burger_name) VALUE (?)";
+    connection.query(queryString, [newBurger], function(err, result) {
       if (err) throw err;
-      console.log("All burgers: "+result);
     });
   },
 
   update: function(condition) {
     var queryString = "UPDATE burgers SET devoured = true WHERE id = ? ";
-    connection.query(queryString,[condition],
+    connection.query(queryString, condition,
       function(err, result) {
         if (err) throw err;
         console.log(result);
