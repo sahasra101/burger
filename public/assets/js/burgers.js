@@ -14,30 +14,29 @@ $(function() {
         type: "PUT",
         data: devouredBurger
       }).then(function() {
-          console.log("id in prior CL now devoured");
+        //   console.log("id in prior CL now devoured");
+        // Reload the page to get the updated list
           location.reload();
-        }
-      );
+        });
     });
   
-    $("#addBurger").on("submit", function(event) {
+    $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
-      var newBurger = {
+      var newBurg = {
         name: $("#newBurger").val().trim()
       };
-  
+      console.log(newBurg);
       // Send the POST request.
       $.ajax("/api/burgers", {
         type: "POST",
-        data: newBurger
+        data: newBurg
       }).then(
         function() {
-          console.log("added new burger");
+        //   console.log("added new burger");
           // Reload the page to get the updated list
           location.reload();
-        }
-      );
+        });
     });
   });

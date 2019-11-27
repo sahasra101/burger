@@ -21,21 +21,23 @@ var orm = {
     });
   },
 
-  create: function(newBurger) {
-    var queryString = "INSERT INTO burgers (burger_name) VALUE (?)";
-    connection.query(queryString, [newBurger], function(err, result) {
+  create: function(newBurger, cb) {
+    // var queryString = "INSERT INTO burgers (burger_name) VALUE (?)";
+    var queryString = "INSERT INTO `burgers` (`burger_name`) VALUES (?)";
+    connection.query(queryString, newBurger, function(err, result) {
       if (err) throw err;
+      cb(result);
     });
   },
 
-  update: function(condition) {
+  update: function(condition, cb) {
     var queryString = "UPDATE burgers SET devoured = true WHERE id = ? ";
     connection.query(queryString, condition,
       function(err, result) {
         if (err) throw err;
         console.log(result);
-      }
-    );
+        cb(result);
+      });
   }
 };
 
