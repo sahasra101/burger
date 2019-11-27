@@ -28,5 +28,8 @@ body {
   .form-inline {
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
+  }
+
+  .form-div {
+    align-content: center;
   }

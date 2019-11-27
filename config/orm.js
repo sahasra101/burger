@@ -29,12 +29,9 @@ var orm = {
     });
   },
 
-  update: function(tableInput, colToUpdate, valOfCol) {
-    var queryString =
-      "UPDATE ?? ?? = 1 WHERE ? = id";
-    connection.query(
-      queryString,
-      [tableInput, colToUpdate, valOfCol],
+  update: function(condition) {
+    var queryString = "UPDATE burgers SET devoured = true WHERE id = ? ";
+    connection.query(queryString,[condition],
       function(err, result) {
         if (err) throw err;
         console.log(result);
