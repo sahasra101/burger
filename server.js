@@ -8,6 +8,10 @@ app.use(express.static("public"));
 
 var PORT = process.env.PORT || 8080;
 
+// Parse application body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 var exphbs = require("express-handlebars");
 
 

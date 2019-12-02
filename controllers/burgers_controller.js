@@ -16,13 +16,13 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  // console.log(req);
-  // var newBurger = req.body.name;
-  console.log(req.body);
+   console.log(req.body);
+  var newBurger = req.body.name;
+  console.log(newBurger);
   burger.create(newBurger,
   function(result) {
     // Send back the ID of the new burger
-    res.json({result});
+    res.json(result);
   });
 });
 
