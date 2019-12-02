@@ -20,7 +20,7 @@ This is a full-stack burger app that uses HTML, CSS, Javascript, nodeJS, Express
 ## screenshot of the app functioning
 
 Home page displayed:
-![Home page for Burger App](assets/img/burgerApp.png)
+![Home page for Burger App](/public/assets/img/burgerApp.png)
 
 ## Technologies used in this app:
 * HTML
